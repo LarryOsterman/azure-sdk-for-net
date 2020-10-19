@@ -16,20 +16,20 @@ namespace Azure.Learn.AppConfig.Models
         /// <summary> Initializes a new instance of KeyValueListResult. </summary>
         internal KeyValueListResult()
         {
-            Items = new ChangeTrackingList<KeyValue>();
+            Items = new ChangeTrackingList<ConfigurationSetting>();
         }
 
         /// <summary> Initializes a new instance of KeyValueListResult. </summary>
         /// <param name="items"> The collection value. </param>
         /// <param name="nextLink"> The URI that can be used to request the next set of paged results. </param>
-        internal KeyValueListResult(IReadOnlyList<KeyValue> items, string nextLink)
+        internal KeyValueListResult(IReadOnlyList<ConfigurationSetting> items, string nextLink)
         {
             Items = items;
             NextLink = nextLink;
         }
 
         /// <summary> The collection value. </summary>
-        public IReadOnlyList<KeyValue> Items { get; }
+        public IReadOnlyList<ConfigurationSetting> Items { get; }
         /// <summary> The URI that can be used to request the next set of paged results. </summary>
         public string NextLink { get; }
     }
