@@ -215,9 +215,11 @@ namespace Azure.Security.Attestation
         /// Resets the policy for the specified <see cref="AttestationType"/> to the default value.
         /// </summary>
         /// <param name="attestationType"><see cref="AttestationType"/> whose policy should be reset.</param>
-        /// <param name="authorizationToken">Signed JSON Web Token signed by one of the policy management certificates used to verify the caller is authorized to reset policy to the default value..</param>
+        /// <param name="authorizationToken">Signed JSON Web Token signed by one of the policy management certificates used to verify the caller is authorized to reset policy to the default value.</param>
         /// <param name="cancellationToken"></param>
         /// <returns>An <see cref="AttestationResponse{PolicyResult}"/> with the policy for the specified attestation type.</returns>
+        /// <remarks>If the authorization token is provided, its body should be empty (in other words, the body should consist of: <code>{}</code>)</remarks>
+        /// <remarks>Note that if the Attestation instance is running in Isolated mode, the <paramref name="authorizationToken"/> parameter is manditory.</remarks>
         public virtual AttestationResponse<PolicyResult> ResetPolicy(AttestationType attestationType, AttestationToken authorizationToken = default, CancellationToken cancellationToken = default)
         {
             using DiagnosticScope scope = _clientDiagnostics.CreateScope($"{nameof(AttestationAdministrationClient)}.{nameof(ResetPolicy)}");
